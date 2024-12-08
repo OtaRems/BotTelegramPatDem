@@ -1,6 +1,6 @@
 const mysql = require('mysql2');
 
-// Database configuration
+//Configurazione Database
 const connection = mysql.createConnection({
     host: 'localhost',         
     user: 'root',              
@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
     database: 'auto',    
 });
 
-// Connect to the database
+//Connetti al Database
 connection.connect((err) => {
     if (err) {
         console.error('Errore di connessione al database:', err);

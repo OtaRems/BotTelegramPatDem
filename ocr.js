@@ -1,13 +1,12 @@
 const tesseract = require('tesseract.js');
 
-// Funzione per riconoscere il testo nelle foto (OCR)
+//Funzione per riconoscere il testo nelle foto (OCR)
 const processLicensePlate = async (filePath) => {
     try {
-        // Usa Tesseract.js per estrarre il testo dall'immagine
         const { data: { text } } = await tesseract.recognize(filePath);
 
         // Rimuove spazi extra e simboli inutili
-        const licensePlate = text.replace(/[\s-]+/g, '').toUpperCase();
+        const licensePlate = text.replace(/[^A-Z0-9]/g, '').toUpperCase();
 
         console.log(`Targa rilevata: ${licensePlate}`);
         return licensePlate;
@@ -17,5 +16,5 @@ const processLicensePlate = async (filePath) => {
     }
 };
 
-// Esporta la funzione
+//Esporta la funzione
 module.exports = processLicensePlate;
